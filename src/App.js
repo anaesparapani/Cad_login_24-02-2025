@@ -7,13 +7,17 @@ import Organizador from "./screens/Organizador";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import Layout from "./components/Layout";
+import TaskList from "./screens/TaskList";
+import TaskDetail from "./screens/TaskDetail";
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown:false}}>
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="TaskList" component={TaskList} />
+        <Stack.Screen name="TaskDetail" component={TaskDetail}/>
         <Stack.Screen
           name="Login"
           component={() => (
@@ -22,11 +26,14 @@ export default function App() {
             </Layout>
           )}
         />
-        <Stack.Screen name="Cadastro" component={() => (
+        <Stack.Screen
+          name="Cadastro"
+          component={() => (
             <Layout>
               <Cadastro />
             </Layout>
-          )} />
+          )}
+        />
         <Stack.Screen name="Home" component={Home} />
         <Stack.Screen name="CadastroEvento" component={Evento} />
         <Stack.Screen name="CadastroOrganizador" component={Organizador} />
