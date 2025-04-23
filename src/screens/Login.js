@@ -24,7 +24,7 @@ export default function Login() {
     await api.postLogin(user).then(
       (response) => {
         Alert.alert("OK", response.data.message);
-        navigation.navigate("Home");
+        navigation.navigate("EventosScreen");
       },
       (error) => {
         Alert.alert("Erro", error.response.data.error);
