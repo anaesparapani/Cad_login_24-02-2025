@@ -57,7 +57,6 @@ export default function EventosScreen() {
   async function getEventos() {
     try {
       const response = await api.getEventos();
-      console.log(response.data);
       setEventos(response.data.events);
       setLoading(false);
     } catch (error) {
