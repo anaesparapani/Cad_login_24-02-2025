@@ -11,6 +11,8 @@ import {
   TextInput,
   Alert,
 } from "react-native";
+import * as SecureStore from "expo-secure-store";
+import { useNavigation } from "@react-navigation/native";
 
 export default function EventosScreen() {
   const [eventos, setEventos] = useState([]);
@@ -76,8 +78,14 @@ export default function EventosScreen() {
     }
   }
 
+  const navigation = useNavigation()
   return (
     <View style={styles.container}>
+      <TouchableOpacity onPress={() =>{
+        navigation.navigate("Evento")
+      }}>
+        <Text>Criar novo evento</Text>
+      </TouchableOpacity>
       <Text style={styles.title}>Eventos Disponíveis</Text>
       {loading ? (
         <ActivityIndicator size="large" color="purple" />
@@ -126,15 +134,13 @@ export default function EventosScreen() {
             <Text style={{ color: "white" }}> Fechar </Text>
           </TouchableOpacity>
           <TouchableOpacity
-            style={[styles.closeButton, { backgroundColor: "#c4006f" }]}
+            style={[styles.closeButton, { backgroundColor: "violet" }]}
             onPress={() => setMostrarForm(!mostrarForm)}
           >
             <Text style={{ color: "white" }}>
               {mostrarForm ? "Cancelar" : "Criar novo ingresso"}
             </Text>
           </TouchableOpacity>
-
-
 
           {mostrarForm && (
             <View style={{ marginTop: 20 }}>
@@ -184,17 +190,17 @@ const styles = StyleSheet.create({
   },
   eventCard: {
     padding: 15,
-    backgroundColor: "#f1f1f1",
+    backgroundColor: "violet",
     marginBottom: 10,
     borderRadius: 8,
   },
   input: {
-  borderWidth: 1,
-  borderColor: "#c4006f",
-  borderRadius: 6,
-  padding: 10,
-  marginBottom: 10,
-},
+    borderWidth: 1,
+    borderColor: "#c4006f",
+    borderRadius: 6,
+    padding: 10,
+    marginBottom: 10,
+  },
   eventName: {
     fontSize: 18,
     fontWeight: "bold",

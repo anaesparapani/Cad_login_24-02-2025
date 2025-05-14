@@ -40,8 +40,14 @@ export default function App() {
             </Layout>
           )}
         </Stack.Screen>
+        <Stack.Screen name="Evento">
+          {() => (
+            <Layout>
+              <Evento />
+            </Layout>
+          )}
+        </Stack.Screen>
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="CadastroEvento" component={Evento} />
         <Stack.Screen name="CadastroOrganizador" component={Organizador} />
         <Stack.Screen name="CadastroIngresso" component={Ingresso} />
       </Stack.Navigator>
